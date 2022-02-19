@@ -20,6 +20,7 @@ import java.net.http.HttpTimeoutException;
 import java.time.Duration;
 import java.time.temporal.ChronoUnit;
 import java.util.Optional;
+import java.util.concurrent.RejectedExecutionException;
 
 @Log4j2
 public class MockRestImpl implements IMockRest {
@@ -37,8 +38,10 @@ public class MockRestImpl implements IMockRest {
             final var request = HttpRequest
                     .newBuilder(new URI(SIMILAR_PRODUCTS_URL.replace("{productId}", productId.toString())))
                     .GET()
+                    .header("Content-Type", "application/json")
+                    .header( "Accept", "application/json" )
+                    .version(HttpClient.Version.HTTP_1_1)
                     .timeout(Duration.of(5, ChronoUnit.SECONDS))
-                    .header("content-type", "application/json")
                     .build();
 
             // sending the request
@@ -84,8 +87,10 @@ public class MockRestImpl implements IMockRest {
             final var request = HttpRequest
                     .newBuilder(new URI(PRODUCT_DETAIL_URL.replace("{productId}", productId.toString())))
                     .GET()
+                    .header("Content-Type", "application/json")
+                    .header( "Accept", "application/json" )
+                    .version(HttpClient.Version.HTTP_1_1)
                     .timeout(Duration.of(5, ChronoUnit.SECONDS))
-                    .header("content-type", "application/json")
                     .build();
 
             // sending the request
@@ -115,9 +120,9 @@ public class MockRestImpl implements IMockRest {
             }
 
         }
-        catch (HttpTimeoutException e)
+        catch (HttpTimeoutException | RejectedExecutionException e)
         {
-            log.error("(MockRestImpl) -> (getProductDetail): Timeout while trying to connect with mock service for product [{}]", productId);
+            log.error("(MockRestImpl) -> (getProductDetail): There was some problems with mock client [{}]", productId);
             return Optional.empty();
         }
         catch (InterruptedException e)
