@@ -1,2 +1,5 @@
-# similarproducts
-Hexagonal architecture mixed with DDD practice example. This project was built on Spring Boot 2 with Java 11 Amazon Corretto JDK.
+# Hexagonal Architecture with DDD
+This mini-project is a very little example of a hexagonal architecture. This project is the implementation of the solution to the problem raised in the repository: https://github.com/dalogax/backendDevTest. The solution is available in two paradigms: imperative and reactive.![Diagram](https://github.com/dalogax/backendDevTest/raw/main/assets/diagram.jpg)
+
+## How to Install and Run the Project
+
