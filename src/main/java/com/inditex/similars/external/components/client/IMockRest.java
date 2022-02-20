@@ -10,8 +10,8 @@ import java.util.Optional;
  */
 public interface IMockRest {
 
-    String SIMILAR_PRODUCTS_URL = "http://localhost:3001/product/{productId}/similarids";
-    String PRODUCT_DETAIL_URL = "http://localhost:3001/product/{productId}";
+    String SIMILAR_PRODUCTS_URL = "http://host.docker.internal:3001/product/{productId}/similarids";
+    String PRODUCT_DETAIL_URL = "http://host.docker.internal:3001/product/{productId}";
 
     /**
      * Retrieve the similar products associated to the product passed by parameter
