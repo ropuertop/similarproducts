@@ -21,6 +21,8 @@ If everything went well, you will be able to invoke to the following command (ju
 docker-compose run --rm k6 run scripts/test.js
 ```
 
+Finally, you will see the tests result on: [Grafana Dashboard](http://localhost:3000/d/Le2Ku9NMk/k6-performance-test?orgId=1)
+
 ## Technical Design
 
 First at all, I tried to design an hexagonal architecture based project. I defined a **Product** root where I defined its own functionality (always abstracted on an interface for versionating purposes) and attributes.
