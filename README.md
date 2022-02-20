@@ -25,7 +25,7 @@ Finally, you will see the tests result on: [Grafana Dashboard](http://localhost:
 
 ## Technical Design
 
-First at all, I tried to design an hexagonal architecture based project. I defined a **Product** root where I defined its own functionality (always abstracted on an interface for versionating purposes) and attributes.
+First at all, I tried to design an hexagonal architecture based project. I've created a **Product** root where I defined its own functionality (always abstracted on an interface for versionating purposes) and attributes.
 
 ### Project Packaging Structure
 
