@@ -50,7 +50,7 @@ public class MockRestImpl implements IMockRest {
             // creating the dto
             if(response.statusCode() == HttpStatus.OK.value())
             {
-                final var optionalBody = Optional.ofNullable(this.client.send(request, HttpResponse.BodyHandlers.ofString()).body());
+                final var optionalBody = Optional.ofNullable(response.body());
 
                 return optionalBody.isPresent()
                         ? this.objectMapper.readValue(optionalBody.get(), Integer[].class)
@@ -112,7 +112,7 @@ public class MockRestImpl implements IMockRest {
             // creating the dto
             if(response.statusCode() == HttpStatus.OK.value())
             {
-                final var body = Optional.ofNullable(this.client.send(request, HttpResponse.BodyHandlers.ofString()).body())
+                final var body = Optional.ofNullable(response.body())
                         .orElseThrow(() -> new ProductNotFoundException("Product not received from Mocks service"));
 
                 // binding JSON properties to POJO
