@@ -8,7 +8,7 @@ import lombok.extern.jackson.Jacksonized;
 @Getter
 @Builder
 @Jacksonized
-public class DTOProductDetail {
+public final class DTOProductDetail {
     @JsonProperty("id")
     private final String id;
     @JsonProperty("name")

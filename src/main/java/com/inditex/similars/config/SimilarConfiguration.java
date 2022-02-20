@@ -21,9 +21,9 @@ import org.springframework.context.annotation.Primary;
 public class SimilarConfiguration {
 
     @Value("${product.hazelcast.ttl:5000}")
-    private int TTL;
+    private int ttl;
     @Value("${product.hazelcast.size:200}")
-    private int CACHE_SIZE;
+    private int cacheSize;
 
     @Bean(name = "product/external/client/mocks")
     public IMockRest mockRest()
@@ -46,18 +46,21 @@ public class SimilarConfiguration {
     @Primary
     @Bean(name = "product/cache")
     public HazelcastInstance cacheConfig() {
+
+        // declaring the instance configuration
         final var config = new Config()
                 .addMapConfig(new MapConfig()
                         .setName("product-cache")
                         .setInMemoryFormat(InMemoryFormat.BINARY)
-                        .setTimeToLiveSeconds(this.TTL)
+                        .setTimeToLiveSeconds(this.ttl)
                         .setEvictionConfig(new EvictionConfig()
                                 .setMaxSizePolicy(MaxSizePolicy.FREE_HEAP_SIZE)
                                 .setEvictionPolicy(EvictionPolicy.LRU)
-                                .setSize(this.CACHE_SIZE)
+                                .setSize(this.cacheSize)
                         )
                 );
 
+        // returning a new Hazelcast instance for domain products
         return Hazelcast.newHazelcastInstance(config);
     }
 }

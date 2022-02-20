@@ -5,7 +5,7 @@ import lombok.Getter;
 
 @Getter
 @Builder
-public class DTOProductDetail {
+public final class DTOProductDetail {
     private String id;
     private String name;
     private Double price;

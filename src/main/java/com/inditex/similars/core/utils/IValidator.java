@@ -8,5 +8,6 @@ import javax.validation.Validator;
 public interface IValidator {
 
     Validator VALIDATOR = Validation.buildDefaultValidatorFactory().getValidator();
+
     Boolean isValid();
 }

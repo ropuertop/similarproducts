@@ -47,6 +47,7 @@ public class MockRestImpl implements IMockRest {
             // sending the request
             final var response = this.client.send(request, HttpResponse.BodyHandlers.ofString());
 
+            // creating the dto
             if(response.statusCode() == HttpStatus.OK.value())
             {
                 final var optionalBody = Optional.ofNullable(this.client.send(request, HttpResponse.BodyHandlers.ofString()).body());
@@ -58,12 +59,19 @@ public class MockRestImpl implements IMockRest {
             else
             {
                 log.error("(MockRestImpl) -> (getSimilarProducts): unexpected error");
+
+                // we could return the default behavior, we only need to define what we want to do on yellow paths
                 throw new UnexpectedDomainException(response.body());
             }
         }
         catch (HttpTimeoutException e)
         {
             log.error("(MockRestImpl) -> (getSimilarProducts): Timeout while trying to connect with mock service for product [{}]", productId, e);
+
+            // TODO: in the future create sometype of TODOTASK (Jira i.e) for Service Support
+
+            // we are returning the default behavior, but we could throw an UnexpectedException or similar.
+            // we only need to define what we want to do on yellow paths
             return new Integer[0];
         }
         catch (InterruptedException e)
@@ -75,7 +83,12 @@ public class MockRestImpl implements IMockRest {
         catch (IOException | URISyntaxException exception)
         {
             log.error("(MockRestImpl) -> (getSimilarProducts): There was an exception trying to connect with mock service", exception);
-            throw new UnexpectedDomainException(exception);
+
+            // TODO: in the future create sometype of TODOTASK (Jira i.e) for Service Support
+
+            // we are returning the default behavior, but we could throw an UnexpectedException or similar.
+            // we only need to define what we want to do on yellow paths
+            return new Integer[0];
         }
     }
 
@@ -96,6 +109,7 @@ public class MockRestImpl implements IMockRest {
             // sending the request
             final var response = this.client.send(request, HttpResponse.BodyHandlers.ofString());
 
+            // creating the dto
             if(response.statusCode() == HttpStatus.OK.value())
             {
                 final var body = Optional.ofNullable(this.client.send(request, HttpResponse.BodyHandlers.ofString()).body())
@@ -115,6 +129,8 @@ public class MockRestImpl implements IMockRest {
                 else
                 {
                     log.error("(MockRestImpl) -> (getProductDetail): unexpected error [{}]", response);
+
+                    // we could return the default behavior, we only need to define what we want to do on yellow paths
                     throw new UnexpectedDomainException("There was an unexpected error");
                 }
             }
@@ -123,6 +139,11 @@ public class MockRestImpl implements IMockRest {
         catch (HttpTimeoutException | RejectedExecutionException e)
         {
             log.error("(MockRestImpl) -> (getProductDetail): There was some problems with mock client [{}]", productId);
+
+            // TODO: in the future create sometype of TODOTASK (Jira i.e) for Service Support
+
+            // we are returning the default behavior, but we could throw an UnexpectedException or similar.
+            // we only need to define what we want to do on yellow paths
             return Optional.empty();
         }
         catch (InterruptedException e)
@@ -134,7 +155,12 @@ public class MockRestImpl implements IMockRest {
         catch (IOException | URISyntaxException exception)
         {
             log.error("(MockRestImpl) -> (getProductDetail): There was an exception trying to connect with mock service", exception);
-            throw new UnexpectedDomainException(exception);
+
+            // TODO: in the future create sometype of TODOTASK (Jira i.e) for Service Support
+
+            // we are returning the default behavior, but we could throw an UnexpectedException or similar.
+            // we only need to define what we want to do on yellow paths
+            return Optional.empty();
         }
     }
 }

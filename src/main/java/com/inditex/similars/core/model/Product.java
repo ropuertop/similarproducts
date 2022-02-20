@@ -23,34 +23,23 @@ public class Product implements ProductFunctionality, Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    /**
-     * Identifier associated to the product
-     */
     @Min(value = 1, message = "INTERNAL ERROR SERVER")
     private final Integer id;
 
-    /**
-     * Name associated to the product
-     */
     @Setter
     @NotBlank(message = "The product name must has a valid name (blank names are disallowed)")
-    @Length(min = 1)
+    @Length(min = 1, message = "The product name must be greater than one character")
     private String name;
 
-    /**
-     * Cost associated to the product
-     */
     @Setter
     @DecimalMin(value = "1.0", message = "The product price must be greater than 1")
     private BigDecimal price;
 
-    /**
-     * See if the product is available to buy
-     */
     @Setter
+    @NotNull(message = "The product availability must be declared")
     private Boolean availability;
 
-    @NotNull
+    @NotNull(message = "The similar products need to be empty (not null)")
     private Set<Product> similarProducts;
 
     @Override

@@ -1,7 +1,7 @@
 /Users/rorigoooo/MCA - Inditex/similarproductsservice/src/main/java/com/inditex/similars/core/exception/global/ProductDomainException.java
+/Users/rorigoooo/MCA - Inditex/similarproductsservice/src/main/java/com/inditex/similars/core/exception/global/ProductExceptionResolver.java
 /Users/rorigoooo/MCA - Inditex/similarproductsservice/src/main/java/com/inditex/similars/core/model/Product.java
 /Users/rorigoooo/MCA - Inditex/similarproductsservice/src/main/java/com/inditex/similars/core/service/IProductService.java
-/Users/rorigoooo/MCA - Inditex/similarproductsservice/src/main/java/com/inditex/similars/core/exception/global/ExceptionResolver.java
 /Users/rorigoooo/MCA - Inditex/similarproductsservice/src/main/java/com/inditex/similars/config/SimilarConfiguration.java
 /Users/rorigoooo/MCA - Inditex/similarproductsservice/src/main/java/com/inditex/similars/api/mapper/ProductControllerMapper.java
 /Users/rorigoooo/MCA - Inditex/similarproductsservice/src/main/java/com/inditex/similars/external/components/client/mapper/MockMapper.java

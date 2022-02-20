@@ -7,6 +7,6 @@ import java.util.List;
 
 @Getter
 @Builder
-public class DTOSimilarProducts {
+public final class DTOSimilarProducts {
     private List<DTOProductDetail> similarProducts;
 }

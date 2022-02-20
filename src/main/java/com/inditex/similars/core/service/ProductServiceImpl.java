@@ -12,19 +12,26 @@ import com.inditex.similars.external.components.ProductExternalImpl;
 public final class ProductServiceImpl implements IProductService
 {
     /**
-     * The third party connector
+     * Outbound needed functionality.
+     *
      * @see ProductExternalImpl
      */
-    private final IProductExternal productRepository;
+    private final IProductExternal productExternal;
 
-    public ProductServiceImpl(final IProductExternal productRepository) {
-        this.productRepository = productRepository;
+    /**
+     * Constructor invoked by configuration.
+     *
+     * @param productExternal outbound bean
+     * @see com.inditex.similars.config.SimilarConfiguration
+     */
+    public ProductServiceImpl(final IProductExternal productExternal) {
+        this.productExternal = productExternal;
     }
 
     @Override
     public Collection<Product> getSimilarProducts(final Integer id)
     {
         log.debug("(IProductService) -> (getSimilarProducts): Getting the similar products associated to the [{}] product", id);
-        return productRepository.findById(id).getSimilarProducts();
+        return this.productExternal.findById(id).getSimilarProducts();
     }
 }

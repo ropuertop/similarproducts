@@ -29,11 +29,11 @@ public final class MockMapper {
     public static Optional<Product> map(final DTOProductDetail nullableDTOProductDetail)
     {
         // building the domain model
-        return Optional.ofNullable(nullableDTOProductDetail).map(DTOProductDetail -> Product.builder()
-                .id(Integer.valueOf(DTOProductDetail.getId()))
-                .name(DTOProductDetail.getName())
-                .price(BigDecimal.valueOf(DTOProductDetail.getPrice()))
-                .availability(DTOProductDetail.getAvailability())
+        return Optional.ofNullable(nullableDTOProductDetail).map(productDetail -> Product.builder()
+                .id(Integer.valueOf(productDetail.getId()))
+                .name(productDetail.getName())
+                .price(BigDecimal.valueOf(productDetail.getPrice()))
+                .availability(productDetail.getAvailability())
                 .similarProducts(new HashSet<>(0))
                 .build());
     }

@@ -12,6 +12,9 @@ import lombok.extern.log4j.Log4j2;
 @Log4j2
 public final class ProductControllerMapper {
 
+    /**
+     * This class is for utility practices. We don't need to instantiate it.
+     */
     private ProductControllerMapper()
     {
         throw new AssertionError("Utility class cannot be instantiated");

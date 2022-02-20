@@ -5,7 +5,7 @@ import lombok.extern.log4j.Log4j2;
 import org.springframework.http.HttpStatus;
 
 @Log4j2
-public class ProductNotFoundException extends ProductDomainException {
+public final class ProductNotFoundException extends ProductDomainException {
 
     private static final String CODE = "PRODUCT-001";
     private static final HttpStatus HTTP_STATUS = HttpStatus.NOT_FOUND;

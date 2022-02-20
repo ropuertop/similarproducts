@@ -3,7 +3,7 @@ package com.inditex.similars.core.exception;
 import com.inditex.similars.core.exception.global.ProductDomainException;
 import org.springframework.http.HttpStatus;
 
-public class UnexpectedDomainException extends ProductDomainException {
+public final class UnexpectedDomainException extends ProductDomainException {
 
     private static final String CODE = "PRODUCT-000";
     private static final HttpStatus HTTP_STATUS = HttpStatus.INTERNAL_SERVER_ERROR;
